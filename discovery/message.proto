@@ -15,10 +15,22 @@ message Message {
 
     oneof payload {
         Announcement announcement = 10;
+        HelloRequest hello_request = 11;
+        HelloResult hello_result = 12;
     }
 }
 
 // Announces a peer.
 message Announcement {
     io.inhibitor.moru.discovery.Peer peer = 1;
+}
+
+// HelloRequest is a request to say hello to a peer.
+message HelloRequest {
+    io.inhibitor.moru.discovery.Peer peer = 1; // Information of the sender.
+}
+
+// HelloResult is a result of saying hello to a peer.
+message HelloResult {
+    io.inhibitor.moru.discovery.Peer peer = 1; // Information of the receiver.
 }
