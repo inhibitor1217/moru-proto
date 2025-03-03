@@ -9,7 +9,9 @@ import "discovery/peer.proto";
 message Message {
     bytes id = 1; // Peer ID.
     int64 session_id = 2; // Session ID.
-    reserved 3 to 9; // Reserved for future use.
+    int64 seqnum = 3; // Sequence number (indicates that the message is the nth message in the session).
+    int64 timestamp = 4; // Timestamp of the message (unix timestamp in milliseconds).
+    reserved 5 to 9; // Reserved for future use.
 
     oneof payload {
         Announcement announcement = 10;
